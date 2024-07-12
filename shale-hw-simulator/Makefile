@@ -1,25 +1,25 @@
 DEV_ROOT ?= $(HOME)
 CONNECTALDIR ?= $(DEV_ROOT)/connectal
-PROJECT_DIR = $(DEV_ROOT)/Shoal/prototype/shoal-hw-simulator/1-fpga-multiple-nics/
-S2H_INTERFACES = ShoalMultiSimTopRequest:ShoalMultiSimTop.request
-H2S_INTERFACES = ShoalMultiSimTop:ShoalMultiSimTopIndication
-BSVFILES = $(PROJECT_DIR)/bsv/ShoalMultiSimTop.bsv
+PROJECT_DIR = $(DEV_ROOT)/shale-hardware-prototype/shale-hw-simulator
+S2H_INTERFACES = ShaleMultiSimTopRequest:ShaleMultiSimTop.request
+H2S_INTERFACES = ShaleMultiSimTop:ShaleMultiSimTopIndication
+BSVFILES = $(PROJECT_DIR)/bsv/ShaleMultiSimTop.bsv
 CPPFILES = $(PROJECT_DIR)/cpp/test_sim.cpp
 
 CONNECTALFLAGS += -D DataBusWidth=128
 CONNECTALFLAGS += --bsvpath=$(CONNECTALDIR)/bsv/
-CONNECTALFLAGS += --bsvpath=$(PROJECT_DIR)/../../circuit-switch/bsv/
-CONNECTALFLAGS += --bsvpath=$(PROJECT_DIR)/../../shoal-NIC/bsv/
-CONNECTALFLAGS += --bsvpath=$(PROJECT_DIR)/../../lib/bsv/
-CONNECTALFLAGS += --bsvpath=$(PROJECT_DIR)/../../lib/generated/
-CONNECTALFLAGS += --bsvpath=$(PROJECT_DIR)/../../lib/pieo/
+CONNECTALFLAGS += --bsvpath=$(PROJECT_DIR)/../circuit-switch/bsv/
+CONNECTALFLAGS += --bsvpath=$(PROJECT_DIR)/../shale-NIC/bsv/
+CONNECTALFLAGS += --bsvpath=$(PROJECT_DIR)/../lib/bsv/
+CONNECTALFLAGS += --bsvpath=$(PROJECT_DIR)/../lib/generated/
+CONNECTALFLAGS += --bsvpath=$(PROJECT_DIR)/../lib/pieo/
 
 # This flag enables PhySwitch instead of MacSwitch
 # CONNECTALFLAGS += -D CW_PHY_SIM
 
 CONNECTALFLAGS += -D NIC_SIM
 CONNECTALFLAGS += -D MULTI_NIC
-CONNECTALFLAGS += -D LIMIT_ACTIVE_BUCKETS
+# CONNECTALFLAGS += -D LIMIT_ACTIVE_BUCKETS
 # comment for fractus 20:
 CONNECTALFLAGS += -D WAIT_FOR_START_SIG
 CONNECTALFLAGS += -D DEBUG_WITHOUT_BUFFERS
@@ -35,6 +35,6 @@ CONNECTALFLAGS += --verilog $(PROJECT_DIR)/../../lib/pieo_rtl
 #endif
 
 prebuild::
-	(cd $(BOARD); BUILDCACHE_CACHEDIR=$(BUILDCACHE_CACHEDIR) $(BUILDCACHE) quartus_sh -t $(PROJECT_DIR)/../../lib/scripts/generate-mac.tcl)
+	(cd $(BOARD); BUILDCACHE_CACHEDIR=$(BUILDCACHE_CACHEDIR) $(BUILDCACHE) quartus_sh -t $(PROJECT_DIR)/../lib/scripts/generate-mac.tcl)
 
 include $(CONNECTALDIR)/Makefile.connectal

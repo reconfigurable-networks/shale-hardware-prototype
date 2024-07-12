@@ -292,10 +292,6 @@ module mkMacSwitch#(Clock txClock,
 
     Integer chunks = valueof(CELL_SIZE) / valueof(BITS_PER_CYCLE);
 
-    // Shoal original declaration. 
-    // Vector#(NUM_OF_SWITCH_PORTS, Reg#(PortIndex))
-    //     timeslot <- replicateM(mkReg(1, clocked_by rxClock, reset_by rx_reset));
-
     Vector#(NUM_OF_SWITCH_PORTS, Reg#(Coordinate))
         current_timeslot <- replicateM(mkReg(0, clocked_by rxClock, reset_by rx_reset));
     Vector#(NUM_OF_SWITCH_PORTS, Reg#(Phase))

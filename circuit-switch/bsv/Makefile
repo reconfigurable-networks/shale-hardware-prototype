@@ -1,6 +1,6 @@
 DEV_ROOT ?= $(HOME)
 CONNECTALDIR ?= $(DEV_ROOT)/connectal
-PROJECT_DIR = $(DEV_ROOT)/Shoal/prototype/circuit-switch
+PROJECT_DIR = $(DEV_ROOT)/shale-hardware-prototype/circuit-switch
 S2H_INTERFACES = CircuitSwTopSimRequest:CircuitSwTopSim.request
 H2S_INTERFACES = CircuitSwTopSim:CircuitSwTopSimIndication
 BSVFILES = $(PROJECT_DIR)/bsv/CircuitSwTopSim.bsv

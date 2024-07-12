@@ -26,21 +26,19 @@
 #include <stdint.h>
 #include <unistd.h>
 
-#include "ShoalMultiSimTopIndication.h"
-#include "ShoalMultiSimTopRequest.h"
+#include "ShaleMultiSimTopIndication.h"
+#include "ShaleMultiSimTopRequest.h"
 #include "GeneratedTypes.h"
 
 static uint32_t server_index = 0;
 static uint32_t rate = 0; //rate of cell generation
 static uint32_t timeslot = 0; //timeslot length
 static uint64_t cycles = 0; //num of cycles to run exp for
-
-static uint16_t chunk_num = 8;
 static uint16_t run_index = 0;
 
-static ShoalMultiSimTopRequestProxy *device = 0;
+static ShaleMultiSimTopRequestProxy *device = 0;
 
-class ShoalMultiSimTopIndication : public ShoalMultiSimTopIndicationWrapper
+class ShaleMultiSimTopIndication : public ShaleMultiSimTopIndicationWrapper
 {
 public:
 
@@ -66,41 +64,39 @@ public:
         fprintf(stderr, "run_idx=%u, node_idx=%u, num_total_pkts_recvd=%lu\n", run_index, idx, count);
 	}
 
-    ShoalMultiSimTopIndication(unsigned int id)
-        : ShoalMultiSimTopIndicationWrapper(id) {}
+    ShaleMultiSimTopIndication(unsigned int id)
+        : ShaleMultiSimTopIndicationWrapper(id) {}
 };
 
 int main(int argc, char **argv)
 {
-    ShoalMultiSimTopIndication echoIndication(IfcNames_ShoalMultiSimTopIndicationH2S);
-    device = new ShoalMultiSimTopRequestProxy(IfcNames_ShoalMultiSimTopRequestS2H);
+    ShaleMultiSimTopIndication echoIndication(IfcNames_ShaleMultiSimTopIndicationH2S);
+    device = new ShaleMultiSimTopRequestProxy(IfcNames_ShaleMultiSimTopRequestS2H);
 
     int i;
 
-    if (argc != 9) {
+    if (argc != 5) {
         printf("Wrong number of arguments\n");
         exit(0);
     } else {
-        server_index = atoi(argv[4]);
-        rate = atoi(argv[5]);
-        timeslot = atoi(argv[6]);
-        cycles = atol(argv[7]);
-
-        chunk_num = (atoi(argv[8]) * 8) / 64;
+        server_index = 0;
+        rate = atoi(argv[3]);
+        timeslot = atoi(argv[1]);
+        cycles = atol(argv[4]);
     }
 
     //  Run experiment i times.
     for (i = 0; i < 3; ++i) {
         printf("********* Starting i = %d **********\n", i);
-        device->startSwitching(atoi(argv[1]), atol(argv[2]));
+        device->startSwitching(1, atol(argv[1]));
         printf("********** Started Sw i = %d **********\n", i);
         sleep(2);
-        device->start_shoal(server_index,
+        device->start_shale(server_index,
                             rate,
                             timeslot,
                             cycles);
         printf("********** Started NIC i = %d **********\n", i);
-        sleep(atoi(argv[3]));
+        sleep(atoi(argv[2]));
         device->printSwStats();
         printf("********* Sleeping for 15 sec i = %d **********\n", i);
         sleep(15);

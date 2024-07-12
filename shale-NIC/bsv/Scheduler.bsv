@@ -682,6 +682,7 @@ module mkScheduler#(Mac mac, Vector#(NUM_OF_ALTERA_PORTS, CellGenerator) cell_ge
 /*------------------------------------------------------------------------------*/
 
     // TODO: Need a proper priority encoder here!!
+    `ifdef LIMIT_ACTIVE_BUCKETS
     function Bit#(BUCKET_IDX_BITS) get_first_one_index(Bit#(NUM_ACTIVE_BUCKETS) bitmap);
         Bit#(NUM_ACTIVE_BUCKETS) x = bitmap;
         Bit#(BUCKET_IDX_BITS) idx = fromInteger(valueof(FINAL_DST_BUCKET_IDX));
@@ -693,6 +694,7 @@ module mkScheduler#(Mac mac, Vector#(NUM_OF_ALTERA_PORTS, CellGenerator) cell_ge
         end
         get_first_one_index = idx;
     endfunction
+    `endif
 
     Vector#(NUM_OF_ALTERA_PORTS, Reg#(ServerIndex))
         curr_src_mac <- replicateM(mkReg(fromInteger(valueof(NUM_OF_SERVERS))));
@@ -818,7 +820,7 @@ module mkScheduler#(Mac mac, Vector#(NUM_OF_ALTERA_PORTS, CellGenerator) cell_ge
                 curr_cell_size[i] <= cell_size_cnt;
             end
 
-            // ------------- Check for corruption + deliver, completely taken from Shoal ------------
+            // ------------- Check for corruption + deliver (from Shoal code) ------------
             // TODO: Fix all hard-coded indices, define these in RingBufferTypes? 
 
             // TODO: Assumes BUS_WIDTH of 512, fix for different values of these.
@@ -857,7 +859,7 @@ module mkScheduler#(Mac mac, Vector#(NUM_OF_ALTERA_PORTS, CellGenerator) cell_ge
                     begin
                         // Collect latency stats for the cell for a single hop at MAC layer (time_recvd - time_sent).
                         // This one-way delay could be skewed for different clocks at different FPGA boards without clock sync. 
-                        // TODO: Shoal was counting corrupted packets towards latency stats as well? Also, only one data point, not agg.
+                        // TODO: Count corrupted packets towards latency stats as well? Also, only one data point, not agg.
                         // TODO: hard-coded indices.
                         Bit#(72) send_time = d.payload[71:0];
                         Bit#(72) latency = current_time - send_time;
@@ -1300,7 +1302,7 @@ module mkScheduler#(Mac mac, Vector#(NUM_OF_ALTERA_PORTS, CellGenerator) cell_ge
 
 /*------------------------------------------------------------------------------*/
 
-                                /* Shoal */
+                                /* Routing */
 
 /*------------------------------------------------------------------------------*/
 
@@ -1595,7 +1597,7 @@ module mkScheduler#(Mac mac, Vector#(NUM_OF_ALTERA_PORTS, CellGenerator) cell_ge
                 // TODO: In order to minimize conflict between choose buffer rules
                 // and Rx processing, we could update tkn_count in Rx, but have this 
                 // rule to update curr_time_in. In this case, regardless of number of
-                // tokens, we only add 1 cycle overhead to Shoal processing. 
+                // tokens, we only add 1 cycle overhead. 
                 rule update_tokens;
                     let recv_tkn_info <- toGet(update_tokens_fifo[i][j][k]).get;
                     let tkn_bkt_idx1 = recv_tkn_info.bkt1;

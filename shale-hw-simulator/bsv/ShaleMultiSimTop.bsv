@@ -46,30 +46,30 @@ import RingBuffer::*;
 import AlteraMacWrap::*;
 import EthMac::*;
 
-interface ShoalMultiSimTopIndication;
-    method Action display_tx_port_0_stats
-        (Bit#(64) sop, Bit#(64) eop, Bit#(64) blocks, Bit#(64) cells);
-    method Action display_tx_port_1_stats
-        (Bit#(64) sop, Bit#(64) eop, Bit#(64) blocks, Bit#(64) cells);
-    method Action display_tx_port_2_stats
-        (Bit#(64) sop, Bit#(64) eop, Bit#(64) blocks, Bit#(64) cells);
-    method Action display_tx_port_3_stats
-        (Bit#(64) sop, Bit#(64) eop, Bit#(64) blocks, Bit#(64) cells);
-    method Action display_rx_port_0_stats
-        (Bit#(64) sop, Bit#(64) eop, Bit#(64) blocks, Bit#(64) cells);
-    method Action display_rx_port_1_stats
-        (Bit#(64) sop, Bit#(64) eop, Bit#(64) blocks, Bit#(64) cells);
-    method Action display_rx_port_2_stats
-        (Bit#(64) sop, Bit#(64) eop, Bit#(64) blocks, Bit#(64) cells);
-    method Action display_rx_port_3_stats
-        (Bit#(64) sop, Bit#(64) eop, Bit#(64) blocks, Bit#(64) cells);
+interface ShaleMultiSimTopIndication;
+    // method Action display_tx_port_0_stats
+    //     (Bit#(64) sop, Bit#(64) eop, Bit#(64) blocks, Bit#(64) cells);
+    // method Action display_tx_port_1_stats
+    //     (Bit#(64) sop, Bit#(64) eop, Bit#(64) blocks, Bit#(64) cells);
+    // method Action display_tx_port_2_stats
+    //     (Bit#(64) sop, Bit#(64) eop, Bit#(64) blocks, Bit#(64) cells);
+    // method Action display_tx_port_3_stats
+    //     (Bit#(64) sop, Bit#(64) eop, Bit#(64) blocks, Bit#(64) cells);
+    // method Action display_rx_port_0_stats
+    //     (Bit#(64) sop, Bit#(64) eop, Bit#(64) blocks, Bit#(64) cells);
+    // method Action display_rx_port_1_stats
+    //     (Bit#(64) sop, Bit#(64) eop, Bit#(64) blocks, Bit#(64) cells);
+    // method Action display_rx_port_2_stats
+    //     (Bit#(64) sop, Bit#(64) eop, Bit#(64) blocks, Bit#(64) cells);
+    // method Action display_rx_port_3_stats
+    //     (Bit#(64) sop, Bit#(64) eop, Bit#(64) blocks, Bit#(64) cells);
     
-    `ifdef CW_PHY_SIM
-    method Action display_latency_port_0_stats(Bit#(64) t);
-    method Action display_latency_port_1_stats(Bit#(64) t);
-    method Action display_latency_port_2_stats(Bit#(64) t);
-    method Action display_latency_port_3_stats(Bit#(64) t);
-    `endif
+    // `ifdef CW_PHY_SIM
+    // method Action display_latency_port_0_stats(Bit#(64) t);
+    // method Action display_latency_port_1_stats(Bit#(64) t);
+    // method Action display_latency_port_2_stats(Bit#(64) t);
+    // method Action display_latency_port_3_stats(Bit#(64) t);
+    // `endif
 
 	method Action display_received_wrong_dst_pkt_count(Bit#(16) idx, Bit#(64) count);
     method Action display_latency(Bit#(16) idx, Bit#(64) count);
@@ -77,50 +77,50 @@ interface ShoalMultiSimTopIndication;
 	method Action display_time_slots_count(Bit#(16) idx, Bit#(64) count);
 	method Action display_received_host_pkt_count(Bit#(16) idx, Bit#(64) count);
 
-	method Action display_sent_host_pkt_count_p0(Bit#(64) count);
-	method Action display_sent_fwd_pkt_count_p0(Bit#(64) count);
-	method Action display_received_fwd_pkt_count_p0(Bit#(64) count);
-	method Action display_received_corrupted_pkt_count_p0(Bit#(64) count);
-    method Action display_num_of_blocks_transmitted_from_mac_p0(Bit#(64) count);
-    method Action display_num_of_blocks_received_by_mac_p0(Bit#(64) count);
+	// method Action display_sent_host_pkt_count_p0(Bit#(64) count);
+	// method Action display_sent_fwd_pkt_count_p0(Bit#(64) count);
+	// method Action display_received_fwd_pkt_count_p0(Bit#(64) count);
+	// method Action display_received_corrupted_pkt_count_p0(Bit#(64) count);
+    // method Action display_num_of_blocks_transmitted_from_mac_p0(Bit#(64) count);
+    // method Action display_num_of_blocks_received_by_mac_p0(Bit#(64) count);
 
-	method Action display_sent_host_pkt_count_p1(Bit#(64) count);
-	method Action display_sent_fwd_pkt_count_p1(Bit#(64) count);
-	method Action display_received_fwd_pkt_count_p1(Bit#(64) count);
-	method Action display_received_corrupted_pkt_count_p1(Bit#(64) count);
-    method Action display_num_of_blocks_transmitted_from_mac_p1(Bit#(64) count);
-    method Action display_num_of_blocks_received_by_mac_p1(Bit#(64) count);
+	// method Action display_sent_host_pkt_count_p1(Bit#(64) count);
+	// method Action display_sent_fwd_pkt_count_p1(Bit#(64) count);
+	// method Action display_received_fwd_pkt_count_p1(Bit#(64) count);
+	// method Action display_received_corrupted_pkt_count_p1(Bit#(64) count);
+    // method Action display_num_of_blocks_transmitted_from_mac_p1(Bit#(64) count);
+    // method Action display_num_of_blocks_received_by_mac_p1(Bit#(64) count);
 
-	method Action display_sent_host_pkt_count_p2(Bit#(64) count);
-	method Action display_sent_fwd_pkt_count_p2(Bit#(64) count);
-	method Action display_received_fwd_pkt_count_p2(Bit#(64) count);
-	method Action display_received_corrupted_pkt_count_p2(Bit#(64) count);
-    method Action display_num_of_blocks_transmitted_from_mac_p2(Bit#(64) count);
-    method Action display_num_of_blocks_received_by_mac_p2(Bit#(64) count);
+	// method Action display_sent_host_pkt_count_p2(Bit#(64) count);
+	// method Action display_sent_fwd_pkt_count_p2(Bit#(64) count);
+	// method Action display_received_fwd_pkt_count_p2(Bit#(64) count);
+	// method Action display_received_corrupted_pkt_count_p2(Bit#(64) count);
+    // method Action display_num_of_blocks_transmitted_from_mac_p2(Bit#(64) count);
+    // method Action display_num_of_blocks_received_by_mac_p2(Bit#(64) count);
 
-	method Action display_sent_host_pkt_count_p3(Bit#(64) count);
-	method Action display_sent_fwd_pkt_count_p3(Bit#(64) count);
-	method Action display_received_fwd_pkt_count_p3(Bit#(64) count);
-	method Action display_received_corrupted_pkt_count_p3(Bit#(64) count);
-    method Action display_num_of_blocks_transmitted_from_mac_p3(Bit#(64) count);
-    method Action display_num_of_blocks_received_by_mac_p3(Bit#(64) count);
+	// method Action display_sent_host_pkt_count_p3(Bit#(64) count);
+	// method Action display_sent_fwd_pkt_count_p3(Bit#(64) count);
+	// method Action display_received_fwd_pkt_count_p3(Bit#(64) count);
+	// method Action display_received_corrupted_pkt_count_p3(Bit#(64) count);
+    // method Action display_num_of_blocks_transmitted_from_mac_p3(Bit#(64) count);
+    // method Action display_num_of_blocks_received_by_mac_p3(Bit#(64) count);
 endinterface
 
-interface ShoalMultiSimTopRequest;
+interface ShaleMultiSimTopRequest;
     method Action startSwitching(Bit#(8) reconfig_flag, Bit#(64) timeslot);
 	method Action printSwStats();
-    method Action start_shoal(Bit#(32) idx, //host server index
+    method Action start_shale(Bit#(32) idx, //host server index
 		                    Bit#(16) rate,  //rate of cell generation
                             Bit#(8) timeslot, //timeslot length
 		                    Bit#(64) cycles); //num of cycles to run exp for
 endinterface
 
-interface ShoalMultiSimTop;
-    interface ShoalMultiSimTopRequest request;
+interface ShaleMultiSimTop;
+    interface ShaleMultiSimTopRequest request;
 endinterface
 
-module mkShoalMultiSimTop#(ShoalMultiSimTopIndication indication)
-        (ShoalMultiSimTop);
+module mkShaleMultiSimTop#(ShaleMultiSimTopIndication indication)
+        (ShaleMultiSimTop);
 
     // Clocks
     Clock defaultClock <- exposeCurrentClock();
@@ -303,7 +303,7 @@ module mkShoalMultiSimTop#(ShoalMultiSimTopIndication indication)
 
 /*------------------------------------------------------------------------------*/
 
-	/* Start Shoal NIC */
+	/* Start NIC */
 
 	SyncFIFOIfc#(Bit#(16))
         rate_fifo <- mkSyncFIFO(1, defaultClock, defaultReset, txClock);
@@ -347,10 +347,9 @@ module mkShoalMultiSimTop#(ShoalMultiSimTopIndication indication)
     Reg#(Bit#(1)) wait_for_100_cycles <- mkReg(0, clocked_by txClock, reset_by txReset);
     Reg#(Bit#(64)) wait_counter <- mkReg(0, clocked_by txClock, reset_by txReset);
 
-    rule start_shoal (host_index_ready == 1
+    rule start_shale (host_index_ready == 1
                     && rate_ready == 1
                     && timeslot_ready == 1);
-        // TODO: In Shoal, WHY ARE WE ONLY STARTING THE CELL GENERATOR FOR idx=0 ?
         if (rate != 0)
         begin
             for (Integer i = 0; i < valueof(NUM_OF_ALTERA_PORTS); i = i + 1)
@@ -584,7 +583,7 @@ module mkShoalMultiSimTop#(ShoalMultiSimTopIndication indication)
         timeslot_fifo.enq(timeslot_reg);
 	endrule
 
-    interface ShoalMultiSimTopRequest request;
+    interface ShaleMultiSimTopRequest request;
         method Action startSwitching(Bit#(8) reconfig_flag, Bit#(64) timeslot);
 			fire_reset_state <= 1;
 			reset_len_count <= 0;
@@ -595,7 +594,7 @@ module mkShoalMultiSimTop#(ShoalMultiSimTopIndication indication)
         method Action printSwStats();
             send_stat_request <= 1;
         endmethod
-        method Action start_shoal(Bit#(32) idx,
+        method Action start_shale(Bit#(32) idx,
 			                    Bit#(16) rate,
                                 Bit#(8) timeslot,
 								Bit#(64) cycles);

@@ -63,7 +63,7 @@ interface SchedulerTopIndication;
 endinterface
 
 interface SchedulerTopRequest;
-    method Action start_shoal(Bit#(32) idx, //host server index
+    method Action start_shale(Bit#(32) idx, //host server index
 		                    Bit#(16) rate,  //rate of cell generation
                             Bit#(8) timeslot, //timeslot length
 		                    Bit#(64) cycles); //num of cycles to run exp for
@@ -198,7 +198,7 @@ module mkSchedulerTop#(SchedulerTopIndication indication)
 
 /*------------------------------------------------------------------------------*/
 
-	/* Start Shoal */
+	/* Start Network */
 
 	SyncFIFOIfc#(Bit#(16))
         rate_fifo <- mkSyncFIFO(1, defaultClock, defaultReset, txClock);
@@ -244,7 +244,7 @@ module mkSchedulerTop#(SchedulerTopIndication indication)
 
     for (Integer i = 0; i < valueof(NUM_OF_ALTERA_PORTS); i = i + 1)
     begin
-        rule start_shoal (host_index_ready == 1
+        rule start_shale (host_index_ready == 1
                         && rate_ready == 1
                         && timeslot_ready == 1);
             if (rate != 0)
@@ -408,7 +408,7 @@ module mkSchedulerTop#(SchedulerTopIndication indication)
 	endrule
 
     interface SchedulerTopRequest request;
-        method Action start_shoal(Bit#(32) idx,
+        method Action start_shale(Bit#(32) idx,
 			                    Bit#(16) rate,
                                 Bit#(8) timeslot,
 								Bit#(64) cycles);

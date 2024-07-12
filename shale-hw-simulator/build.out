@@ -1,0 +1,175 @@
+BOARD=vsim PROJECTDIR=vsim make --no-print-directory gentarget prebuild 
+touch vsim/Makefile.autotop
+topgen ['/root/connectal/scripts/topgen.py', '--project-dir', 'vsim/generatedbsv', '--cnoc', '--wrapper', 'ShaleMultiSimTopRequest:ShaleMultiSimTop.request', '--proxy', 'ShaleMultiSimTop:ShaleMultiSimTopIndication']
+options.proxy: ['ShaleMultiSimTop:ShaleMultiSimTopIndication']
+options.wrapper: ShaleMultiSimTopRequest:ShaleMultiSimTop.request {'uparam': '', 'inverse': '', 'xparam': '', 'tparam': '', 'usermod': 'ShaleMultiSimTopRequest', 'memFlag': '', 'name': 'ShaleMultiSimTop.request'}
+Writing: /root/shale-hardware-prototype/shale-hw-simulator/vsim/generatedbsv/Top.bsv
+Writing: /root/shale-hardware-prototype/shale-hw-simulator/vsim/generatedbsv/IfcNames.bsv
+Writing: /root/shale-hardware-prototype/shale-hw-simulator/vsim/generatedbsv/../jni/topEnum.h
+['DataBusWidth=128', 'NIC_SIM', 'MULTI_NIC', 'WAIT_FOR_START_SIG', 'DEBUG_WITHOUT_BUFFERS', 'PERMUTATION_TRAFFIC', 'ConnectalVersion=17.01.1', 'NumberOfMasters=1', 'PinType=Empty', 'PinTypeInclude=Misc', 'NumberOfUserTiles=1', 'SlaveDataBusWidth=32', 'SlaveControlAddrWidth=5', 'BurstLenSize=10', 'project_dir=$(DTOP)']
+['DataBusWidth=128', 'NIC_SIM', 'MULTI_NIC', 'WAIT_FOR_START_SIG', 'DEBUG_WITHOUT_BUFFERS', 'PERMUTATION_TRAFFIC', 'ConnectalVersion=17.01.1', 'NumberOfMasters=1', 'PinType=Empty', 'PinTypeInclude=Misc', 'NumberOfUserTiles=1', 'SlaveDataBusWidth=32', 'SlaveControlAddrWidth=5', 'BurstLenSize=10', 'project_dir=$(DTOP)', 'MainClockPeriod=20', 'DerivedClockPeriod=10.000000']
+fpga_vendor None
+os.unlink(/root/shale-hardware-prototype/shale-hw-simulator/vsim/Makefile.new)
+os.unlink(/root/shale-hardware-prototype/shale-hw-simulator/vsim/generatedbsv/ConnectalProjectConfig.bsv.new)
+os.unlink(/root/shale-hardware-prototype/shale-hw-simulator/vsim/jni/ConnectalProjectConfig.h.new)
+(cd vsim; BUILDCACHE_CACHEDIR=  quartus_sh -t /root/shale-hardware-prototype/shale-hw-simulator/../lib/scripts/generate-mac.tcl)
+Info: *******************************************************************
+Info: Running Quartus Prime Shell
+    Info: Version 17.0.0 Build 595 04/25/2017 SJ Standard Edition
+    Info: Copyright (C) 2017  Intel Corporation. All rights reserved.
+    Info: Your use of Intel Corporation's design tools, logic functions 
+    Info: and other software and tools, and its AMPP partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Intel Program License 
+    Info: Subscription Agreement, the Intel Quartus Prime License Agreement,
+    Info: the Intel MegaCore Function License Agreement, or other 
+    Info: applicable license agreement, including, without limitation, 
+    Info: that your use is for the sole purpose of programming logic 
+    Info: devices manufactured by Intel and sold by Intel or its 
+    Info: authorized distributors.  Please refer to the applicable 
+    Info: agreement for further details.
+    Info: Processing started: Fri Jul 12 01:51:33 2024
+Info: Command: quartus_sh -t /root/shale-hardware-prototype/shale-hw-simulator/../lib/scripts/generate-mac.tcl
+17.0.0
+Generate simulation model..
+couldn't execute "ip-generate": no such file or directory
+couldn't execute "ip-make-simscript": no such file or directory
+Info (23030): Evaluation of Tcl script /root/shale-hardware-prototype/shale-hw-simulator/../lib/scripts/generate-mac.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 736 megabytes
+    Info: Processing ended: Fri Jul 12 01:51:34 2024
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:00
+echo "make -C vsim --no-print-directory all"
+make -C vsim --no-print-directory all
+make -C vsim --no-print-directory all
+split ['DataBusWidth', '128']
+split ['ConnectalVersion', '17.01.1']
+split ['NumberOfMasters', '1']
+split ['PinType', 'Empty']
+split ['PinTypeInclude', 'Misc']
+split ['NumberOfUserTiles', '1']
+split ['SlaveDataBusWidth', '32']
+split ['SlaveControlAddrWidth', '5']
+split ['BurstLenSize', '10']
+split ['project_dir', '/root/shale-hardware-prototype/shale-hw-simulator/vsim']
+split ['MainClockPeriod', '20']
+split ['DerivedClockPeriod', '10.000000']
+split ['MODELSIM', '1']
+split ['PhysAddrWidth', '40']
+split ['PcieLanes', '8']
+split ['CONNECTAL_BITS_DEPENDENCES', 'vsim']
+/root/connectal/scripts/bsvdepend.py -o obj/Makefile -D DataBusWidth=128 -D NIC_SIM -D MULTI_NIC -D WAIT_FOR_START_SIG -D DEBUG_WITHOUT_BUFFERS -D PERMUTATION_TRAFFIC -D ConnectalVersion=17.01.1 -D NumberOfMasters=1 -D PinType=Empty -D PinTypeInclude=Misc -D NumberOfUserTiles=1 -D SlaveDataBusWidth=32 -D SlaveControlAddrWidth=5 -D BurstLenSize=10 -D project_dir=/root/shale-hardware-prototype/shale-hw-simulator/vsim -D MainClockPeriod=20 -D DerivedClockPeriod=10.000000 -D MODELSIM=1 -D CnocTop -D XsimHostInterface -D PhysAddrWidth=40 -D XSIM -D SIMULATION -D SVDPI -D PcieLanes=8 -D CONNECTAL_BITS_DEPENDENCES=vsim -D BOARD_vsim --bsvpath=/root/shale-hardware-prototype/shale-hw-simulator/bsv:/root/connectal/bsv:/root/shale-hardware-prototype/shale-hw-simulator/vsim/generatedbsv:/root/shale-hardware-prototype/shale-hw-simulator:/root/shale-hardware-prototype/circuit-switch/bsv:/root/shale-hardware-prototype/shale-NIC/bsv:/root/shale-hardware-prototype/lib/bsv:/root/shale-hardware-prototype/lib/generated:/root/shale-hardware-prototype/lib/pieo:/root/connectal/lib/bsv:/root/connectal/generated/xilinx:/root/connectal/generated/altera --all /root/connectal/bsv/XsimTop.bsv
+prepare_bin_target
+ubuntu.exe
+'jni/ubuntu.exe' -> 'bin/ubuntu.exe'
+ubuntu.exe done
+BSV_BO [ /root/shale-hardware-prototype/shale-hw-simulator/vsim/generatedbsv/IfcNames.bsv]
+BSV_BO [ /root/shale-hardware-prototype/shale-hw-simulator/vsim/generatedbsv/ShaleMultiSimTopIndication.bsv]
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkShaleMultiSimTopIndicationInput.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkShaleMultiSimTopIndicationInput.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkShaleMultiSimTopIndicationWrapperMemPortalPipes.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkShaleMultiSimTopIndicationWrapperMemPortalPipes.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkShaleMultiSimTopIndicationOutputPipes.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkShaleMultiSimTopIndicationOutputPipes.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkShaleMultiSimTopIndicationOutput.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkShaleMultiSimTopIndicationOutput.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkShaleMultiSimTopIndicationProxySynth.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkShaleMultiSimTopIndicationProxySynth.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkShaleMultiSimTopIndicationInverter.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkShaleMultiSimTopIndicationInverter.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkShaleMultiSimTopIndicationInverterV.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkShaleMultiSimTopIndicationInverterV.v
+BSV_BO [ /root/shale-hardware-prototype/shale-hw-simulator/vsim/generatedbsv/ShaleMultiSimTopRequest.bsv]
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkShaleMultiSimTopRequestInput.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkShaleMultiSimTopRequestInput.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkShaleMultiSimTopRequestWrapperMemPortalPipes.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkShaleMultiSimTopRequestWrapperMemPortalPipes.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkShaleMultiSimTopRequestOutputPipes.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkShaleMultiSimTopRequestOutputPipes.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkShaleMultiSimTopRequestOutput.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkShaleMultiSimTopRequestOutput.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkShaleMultiSimTopRequestProxySynth.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkShaleMultiSimTopRequestProxySynth.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkShaleMultiSimTopRequestInverter.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkShaleMultiSimTopRequestInverter.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkShaleMultiSimTopRequestInverterV.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkShaleMultiSimTopRequestInverterV.v
+BSV_BO [ /root/shale-hardware-prototype/shale-hw-simulator/vsim/generatedbsv/Top.bsv]
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkCnocTop.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkCnocTop.v
+BSV_BO [ /root/shale-hardware-prototype/shale-hw-simulator/vsim/generatedbsv/MMURequest.bsv]
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMMURequestInput.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMMURequestInput.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMMURequestWrapperMemPortalPipes.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMMURequestWrapperMemPortalPipes.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMMURequestOutputPipes.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMMURequestOutputPipes.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMMURequestOutput.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMMURequestOutput.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMMURequestProxySynth.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMMURequestProxySynth.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMMURequestInverter.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMMURequestInverter.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMMURequestInverterV.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMMURequestInverterV.v
+BSV_BO [ /root/shale-hardware-prototype/shale-hw-simulator/vsim/generatedbsv/MMUIndication.bsv]
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMMUIndicationInput.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMMUIndicationInput.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMMUIndicationWrapperMemPortalPipes.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMMUIndicationWrapperMemPortalPipes.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMMUIndicationOutputPipes.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMMUIndicationOutputPipes.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMMUIndicationOutput.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMMUIndicationOutput.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMMUIndicationProxySynth.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMMUIndicationProxySynth.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMMUIndicationInverter.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMMUIndicationInverter.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMMUIndicationInverterV.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMMUIndicationInverterV.v
+BSV_BO [ /root/shale-hardware-prototype/shale-hw-simulator/vsim/generatedbsv/MemServerIndication.bsv]
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMemServerIndicationInput.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMemServerIndicationInput.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMemServerIndicationWrapperMemPortalPipes.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMemServerIndicationWrapperMemPortalPipes.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMemServerIndicationOutputPipes.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMemServerIndicationOutputPipes.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMemServerIndicationOutput.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMemServerIndicationOutput.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMemServerIndicationProxySynth.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMemServerIndicationProxySynth.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMemServerIndicationInverter.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMemServerIndicationInverter.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMemServerIndicationInverterV.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMemServerIndicationInverterV.v
+BSV_BO [ /root/shale-hardware-prototype/shale-hw-simulator/vsim/generatedbsv/MemServerRequest.bsv]
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMemServerRequestInput.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMemServerRequestInput.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMemServerRequestWrapperMemPortalPipes.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMemServerRequestWrapperMemPortalPipes.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMemServerRequestOutputPipes.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMemServerRequestOutputPipes.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMemServerRequestOutput.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMemServerRequestOutput.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMemServerRequestProxySynth.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMemServerRequestProxySynth.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMemServerRequestInverter.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMemServerRequestInverter.v
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkMemServerRequestInverterV.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkMemServerRequestInverterV.v
+BSV_BO [ /root/connectal/bsv/XsimTop.bsv]
+BSCVERILOG [verilog/mkXsimTop.v]
+Schedule dump file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/obj/mkXsimTop.sched
+Verilog file created: /root/shale-hardware-prototype/shale-hw-simulator/vsim/verilog/mkXsimTop.v
+verilog
+mkdir -p  vsim.dir/xsc
+cc -c   -Wa,-W -fPIC -m64 -I"//include" -DSYSTEM_VERILOG -DBOARD_vsim -I/root/connectal/cpp -I/root/connectal -Ijni -o  vsim.dir/xsc/XsimMsgRequest.o  /root/shale-hardware-prototype/shale-hw-simulator/vsim/jni/XsimMsgRequest.c
+mkdir -p  vsim.dir/xsc
+cc -c   -Wa,-W -fPIC -m64 -I"//include" -DSYSTEM_VERILOG -DBOARD_vsim -I/root/connectal/cpp -I/root/connectal -Ijni -o  vsim.dir/xsc/XsimMsgIndication.o  /root/shale-hardware-prototype/shale-hw-simulator/vsim/jni/XsimMsgIndication.c
+mkdir -p  vsim.dir/xsc
+g++ -c   -Wa,-W -fPIC -m64 -I"//include" -DSYSTEM_VERILOG -DBOARD_vsim -I/root/connectal/cpp -I/root/connectal -Ijni -o  vsim.dir/xsc/GeneratedCppCallbacks.o  /root/shale-hardware-prototype/shale-hw-simulator/vsim/jni/GeneratedCppCallbacks.cpp
+rm -rf work
+vlib work

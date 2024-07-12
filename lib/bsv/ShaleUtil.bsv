@@ -72,7 +72,6 @@ typedef 2 MAX_TOKENS_PER_BUCKET;
 // Bits to store token counts.
 typedef 2 TOKEN_COUNT_SIZE;
 
-// But this doesn't have all the fields mentioned in Shoal paper?!
 // NOTE: If you change header format, also change offset values used in Scheduler.
 // TODO: Can reduce this to 64 bits if we cut down ServerIndex size.
 typedef struct {

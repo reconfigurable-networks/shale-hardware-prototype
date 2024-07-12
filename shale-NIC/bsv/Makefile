@@ -1,6 +1,6 @@
 DEV_ROOT ?= $(HOME)
 CONNECTALDIR ?= $(DEV_ROOT)/connectal
-PROJECT_DIR = $(DEV_ROOT)/Shoal/prototype/shoal-NIC
+PROJECT_DIR = $(DEV_ROOT)/shale-hardware-prototype/shale-NIC
 PIEO_DIR = $(DEV_ROOT)/PIEO-Scheduler
 S2H_INTERFACES = SchedulerTopSimRequest:SchedulerTopSim.request
 H2S_INTERFACES = SchedulerTopSim:SchedulerTopSimIndication
@@ -15,7 +15,6 @@ CONNECTALFLAGS += --bsvpath=$(PROJECT_DIR)/../lib/pieo/
 
 CONNECTALFLAGS += -D NIC_SIM
 CONNECTALFLAGS += -D MULTI_NIC
-CONNECTALFLAGS += -D SHOAL
 # comment for fractus 20:
 CONNECTALFLAGS += -D WAIT_FOR_START_SIG
 CONNECTALFLAGS += -D DEBUG_WITHOUT_BUFFERS
