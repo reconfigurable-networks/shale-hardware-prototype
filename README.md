@@ -5,13 +5,13 @@ This FPGA-based prototype implements NIC logic at nodes, and a circuit switch co
 We use Bluespec Systems Verilog, a high-level hardware description language.
 The NIC implementation is in `shale-NIC/`, this is where all of the routing and buffering logic lives. The `circuit-switch/` directory implements an electrical circuit switch for the given schedule. The code in `shale-hw-simulator` combines these to simulate a Shale network, with parameters such as number of nodes and levels in `lib/bsv/ShaleUtil.bsv`. 
 
-For hardware compilation and simulation, this repository requires require (Quartus (17.0))[https://www.intel.com/content/www/us/en/software-kit/669513/intel-quartus-prime-standard-edition-design-software-version-17-0-for-linux.html] and (Questa)[https://www.intel.com/content/www/us/en/software-kit/776289/questa-intel-fpgas-pro-edition-software-version-23-1.html] with a working license. This should be free with a university accounts. 
+For hardware compilation and simulation, this repository requires require (Quartus 17.0)[https://www.intel.com/content/www/us/en/software-kit/669513/intel-quartus-prime-standard-edition-design-software-version-17-0-for-linux.html] and (Questa)[https://www.intel.com/content/www/us/en/software-kit/776289/questa-intel-fpgas-pro-edition-software-version-23-1.html] with a working license. This should be free with a university accounts. 
 
 We also use the open source versions of bsc and bsc-contrib, connectal, and fpgamake, 
 These can be set up to execute simulations using docker as described below.
 
 ```
-git clone --recursive
+git clone --recursive https://github.com/reconfigurable-networks/shale-hardware-prototype
 cd shale-hardware-prototype
 sudo docker build --tag shale .
 # Run a conatiner with the built image, and link quartus and questa installations, as well as shale code.
